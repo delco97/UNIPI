@@ -1,0 +1,1 @@
+Creazione di un progetto C in X code: https://wpguru.co.uk/2017/06/how-to-use-xcode-for-c-and-c-development/

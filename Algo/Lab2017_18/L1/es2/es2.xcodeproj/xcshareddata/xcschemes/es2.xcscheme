@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6571A8C72191DAE100EC4463"
-               BuildableName = "es1"
-               BlueprintName = "es1"
-               ReferencedContainer = "container:es1.xcodeproj">
+               BlueprintIdentifier = "6521AA0D2191E36F00C1E5A9"
+               BuildableName = "es2"
+               BlueprintName = "es2"
+               ReferencedContainer = "container:es2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6571A8C72191DAE100EC4463"
-            BuildableName = "es1"
-            BlueprintName = "es1"
-            ReferencedContainer = "container:es1.xcodeproj">
+            BlueprintIdentifier = "6521AA0D2191E36F00C1E5A9"
+            BuildableName = "es2"
+            BlueprintName = "es2"
+            ReferencedContainer = "container:es2.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -53,15 +53,16 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
+         BundleIdentifier = "com.apple.Terminal"
          FilePath = "/Applications/Utilities/Terminal.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6571A8C72191DAE100EC4463"
-            BuildableName = "es1"
-            BlueprintName = "es1"
-            ReferencedContainer = "container:es1.xcodeproj">
+            BlueprintIdentifier = "6521AA0D2191E36F00C1E5A9"
+            BuildableName = "es2"
+            BlueprintName = "es2"
+            ReferencedContainer = "container:es2.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>
@@ -83,10 +84,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6571A8C72191DAE100EC4463"
-            BuildableName = "es1"
-            BlueprintName = "es1"
-            ReferencedContainer = "container:es1.xcodeproj">
+            BlueprintIdentifier = "6521AA0D2191E36F00C1E5A9"
+            BuildableName = "es2"
+            BlueprintName = "es2"
+            ReferencedContainer = "container:es2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
