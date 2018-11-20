@@ -31,7 +31,7 @@ int main(void) {
 
 	scanf("%s",s1);
 	scanf("%s",s2);
-	printf("%d\n",my_strcmp(s1,s2));
+	printf("%s\n",(my_strcmp(s1,s2)==1)?"+1":"-1");
 
 	return EXIT_SUCCESS;
 }
