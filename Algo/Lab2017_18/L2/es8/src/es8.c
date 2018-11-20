@@ -28,10 +28,13 @@ int my_strcmp(char* s1, char* s2){
 int main(void) {
 	char s1[DIM_STR];
 	char s2[DIM_STR];
+	int res = 0;
 
 	scanf("%s",s1);
 	scanf("%s",s2);
-	printf("%s\n",(my_strcmp(s1,s2)==1)?"+1":"-1");
+	res = my_strcmp(s1,s2);
+	if(res == 1)printf("+");
+	printf("%d\n",res);
 
 	return EXIT_SUCCESS;
 }
