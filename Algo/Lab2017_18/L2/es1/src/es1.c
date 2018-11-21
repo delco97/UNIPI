@@ -20,9 +20,13 @@ void printArray(int *a,int dim);
 //Implementations
 int* FinDVal(int *a,int dim, int v){
 	int *p = NULL;
+	int found = 0;
 	int i=0;
-	while(p==NULL && i<dim){
-		if(a[i] == v)p = a + i;
+	while(p==NULL && i<dim && !found){
+		if(a[i] == v){
+			found=1;
+			p = a + i;
+		}
 		else i++;
 	}
 	return p;
