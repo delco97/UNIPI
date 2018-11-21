@@ -1,0 +1,30 @@
+Stampa dei valori in input: (10 valori)
+2
+3
+4
+8
+56
+41
+12
+10
+2
+3
+Stampa dei valori senza duplicati: (8 valori)
+2
+3
+4
+8
+56
+41
+12
+10
+Risultato di ugualeASomma: 0
+Risultato maggioreDeiSuccessivi:
+0
+0
+0
+0
+1
+1
+1
+1

@@ -1,0 +1,7 @@
+let rec f l n m = match l with
+	  [] -> true
+	| [x] -> true
+	| y::x::xs -> if (y=n & x<>m) then false
+	              else f (x::xs) n m;;
+
+f [1;2;1;0] 1 2;;

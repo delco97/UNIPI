@@ -1,0 +1,50 @@
+Stampa dei valori in input: (20 valori)
+5
+64
+32
+5
+76
+89
+123
+45
+65
+83
+123
+45
+78
+312
+12
+45
+152
+45
+32
+45
+Stampa dei valori senza duplicati: (13 valori)
+5
+64
+32
+76
+89
+123
+45
+65
+83
+78
+312
+12
+152
+Risultato di ugualeASomma: 0
+Risultato maggioreDeiSuccessivi:
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+1
+0
+1

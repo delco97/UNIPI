@@ -1,0 +1,16 @@
+Stampa dei valori in input: (10 valori)
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+Stampa dei valori senza duplicati: (1 valori)
+1
+Risultato di ugualeASomma: 0
+Risultato maggioreDeiSuccessivi:
+1
