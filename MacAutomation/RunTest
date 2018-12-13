@@ -1,0 +1,62 @@
+
+var app = Application.currentApplication();
+app.includeStandardAdditions = true;
+
+var executableFile
+var inputFiles
+var outputFiles
+var inputFilesContent = []
+var outputFilesContent = []
+var response
+var good = 0
+var bad = 0;
+var finalReport = ""
+var listNotPassed = [];
+//Get executable
+executableFile = app.chooseFile({
+    withPrompt : "Choose program to test",
+});
+
+//Get input files
+inputFiles = app.chooseFile({
+    withPrompt : "Choose input files",
+    multipleSelectionsAllowed: true,
+});
+//Get output files
+do{
+  outputFiles = app.chooseFile({
+      withPrompt : "Choose output files (as many as input files: "+ inputFiles.length +")",
+      multipleSelectionsAllowed: true,
+    });
+  if(outputFiles.length!=inputFiles.length){
+    response = app.displayDialog("Output files need to be as many as input files: " + inputFiles.length + " files", {
+        withTitle : "Warning",
+        withIcon: "caution",
+        buttons: ["Ok","Exit"],
+        defaultButton: "Ok"
+    });
+  }
+}while(outputFiles.length!=inputFiles.length && response.buttonReturned == "Ok");
+
+if(outputFiles.length == inputFiles.length){
+  for(var i=0;i<inputFiles.length;i++){
+    inputFilesContent.push(app.read(inputFiles[i].toString()));
+    outputFilesContent.push(app.read(outputFiles[i].toString()));
+    //Excute selected program passing ith file as input
+    app.displayDialog(executableFile.toString() + " < " + inputFiles[i].toString());
+    var expectedOut = app.doShellScript(executableFile.toString() + " < " + inputFiles[i].toString());
+    if(expectedOut == outputFilesContent[i])good++;
+    else{
+      bad++;
+      listNotPassed.push(inputFiles[i].toString());
+    }
+  }
+  finalReport = "Test case passed: " + good + "/" + inputFiles.length + "\n";
+  finalReport += "Test case not passed: "+ bad + "/" + inputFiles.length + "\n";
+  finalReport += "Failed tests: \n" + listNotPassed.toString();
+  app.displayDialog(finalReport);
+}
+
+
+
+
