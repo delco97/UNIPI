@@ -39,7 +39,7 @@ int main(void) {
 	int n1=0;
 	int * a1;
 
-    printf("**** THE MISSING NUMBER ****\n ");
+  printf("**** THE MISSING NUMBER ****\n ");
 	printf("Array size: ");
 	scanf("%d",&n1);
 	if(n1 <= 0){
