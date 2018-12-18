@@ -5,6 +5,7 @@ app.includeStandardAdditions = true;
 var executableFile
 var inputFiles
 var outputFiles
+var resultFolder
 var inputFilesContent = []
 var outputFilesContent = []
 var response
@@ -12,6 +13,7 @@ var good = 0
 var bad = 0;
 var finalReport = ""
 var listNotPassed = [];
+
 //Get executable
 executableFile = app.chooseFile({
     withPrompt : "Choose program to test",
@@ -39,24 +41,46 @@ do{
 }while(outputFiles.length!=inputFiles.length && response.buttonReturned == "Ok");
 
 if(outputFiles.length == inputFiles.length){
+  response = app.displayDialog("Do you want to save results? (" + inputFiles.length + " files)", {
+      withTitle : "Warning",
+      withIcon: "note",
+      buttons: ["Yes","No"],
+      defaultButton: "Yes"
+  });
+
+  if(response.buttonReturned == "Yes"){//Get output folder
+    resultFolder = app.chooseFolder({
+        withPrompt : "Choose an output folder for your results:",
+        multipleSelectionsAllowed: false,
+      });
+  }
+
   for(var i=0;i<inputFiles.length;i++){
-    inputFilesContent.push(app.read(inputFiles[i].toString()));
-    outputFilesContent.push(app.read(outputFiles[i].toString()));
+    inputFilesContent[i] = (app.read(inputFiles[i].toString()));
+    outputFilesContent[i] = (app.read(outputFiles[i].toString()));
     //Excute selected program passing ith file as input
-    app.displayDialog(executableFile.toString() + " < " + inputFiles[i].toString());
+    //app.displayDialog(executableFile.toString() + " < " + inputFiles[i].toString());
     var expectedOut = app.doShellScript(executableFile.toString() + " < " + inputFiles[i].toString());
-    if(expectedOut == outputFilesContent[i])good++;
+    if(response.buttonReturned == "Yes"){//Store calculated output
+      app.doShellScript("echo " + expectedOut + " > " + resultFolder + "/output" + i);
+    }
+    //app.displayDialog("My out: " + expectedOut + " Excpected Out: "+outputFilesContent[i]);
+    if(expectedOut.trim() == outputFilesContent[i].trim())good++;
     else{
       bad++;
       listNotPassed.push(inputFiles[i].toString());
     }
   }
+  //Report
   finalReport = "Test case passed: " + good + "/" + inputFiles.length + "\n";
   finalReport += "Test case not passed: "+ bad + "/" + inputFiles.length + "\n";
-  finalReport += "Failed tests: \n" + listNotPassed.toString();
+  finalReport += "Failed tests: \n" + getFilenames(listNotPassed);
   app.displayDialog(finalReport);
 }
 
-
-
-
+function getFilenames(aPaths) {
+  res = "";
+  for(var i=0;i<aPaths.length;i++)
+    res += aPaths[i].split("/").pop() + "\n";
+  return res;
+}
