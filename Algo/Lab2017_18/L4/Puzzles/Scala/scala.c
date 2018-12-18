@@ -83,7 +83,7 @@ int stairArea(Points a,int nPoints){
     //Loop through all points, from the one withe the biggest y to the one with the smaller y
     for(int i = nPoints - 1; i >= 0; i-- ){
       if(a[i].x > xBound){
-        printf("(%d , %d) ",a[i].x,a[i].y);
+        //printf("(%d , %d) ",a[i].x,a[i].y);
         area += (a[i].x - xBound) * a[i].y; 
         xBound = a[i].x ;
       }
@@ -101,8 +101,9 @@ int main(){
     /* //######### Debug #########
     printf("\nPoints just read:\n");
     printPoints(points,nPoints);
-    quicksort(points,0,nPoints - 1); //Sort points by their y coordinate
     */
+    quicksort(points,0,nPoints - 1); //Sort points by their y coordinate
+    
     /* //######## #Debug #########
     printf("\nPoints after sort by y coordinate:\n");
     printPoints(points,nPoints);
