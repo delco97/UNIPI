@@ -24,8 +24,8 @@ All the items must be in the following range; [1;n+1].
 int findMissing(int * a,int sx,int dx,int n){
   if(sx > dx)return n; //Base case empty subarray
   if(sx == dx){//Base case: 1 element
-    if(a[sx] - 1  == sx)return sx + 1;
-    else return sx;
+    if(a[sx] - 1  == sx)return sx + 2;
+    else return sx + 1;
   }else{//Divide
     int cx = (sx+dx)/2;
     if(a[sx] - 1 == sx)return findMissing(a,cx + 1,dx, n);
@@ -38,11 +38,11 @@ int findMissing(int * a,int sx,int dx,int n){
 */
 int findMissing_k(int * a,int sx,int dx,int n){
 	int i=0;
-	while(i<n && a[i] - 1 == i)i = 2 * i;
+	while(i<n && a[i] - 1 == i)i = (2 * i) + 1;
 	if(i>=n)//Array lopped without encountering a[i] - 1 != i => The missing number could be found in [(i/2) + 1;n-1]
-		return findMissing(a,(i/2)+1,n-1,n);
+		return findMissing(a,(i/2),n-1,n);
 	else //Array lopped interrupted due to a[i] - 1 == i => The missing number could be found in [(i/2) + 1;i]
-		return findMissing(a,(i/2)+1,i,n);
+		return findMissing(a,(i/2),i,n);
 }
 
 int main(void) {
