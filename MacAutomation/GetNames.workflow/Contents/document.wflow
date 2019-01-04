@@ -167,7 +167,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>494.000000:226.000000</string>
+				<string>494.000000:158.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -270,7 +270,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>494.000000:472.000000</string>
+				<string>494.000000:404.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run JavaScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -466,7 +466,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>494.000000:652.000000</string>
+				<string>494.000000:584.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/New Text File.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -476,14 +476,14 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>8DE3C94C-FD2D-4542-ADD0-A59F926A8C04</key>
+		<key>5FDF918C-D09E-474E-8537-7EE59E8BFE02</key>
 		<dict>
 			<key>from</key>
 			<string>4201171D-DDB2-4069-86D8-83FDD9E4D6AC - 4201171D-DDB2-4069-86D8-83FDD9E4D6AC</string>
 			<key>to</key>
 			<string>C6AED61D-92BC-40FB-AC68-838989096D57 - C6AED61D-92BC-40FB-AC68-838989096D57</string>
 		</dict>
-		<key>90B36D89-DFCF-4A91-AC4C-36F3A721AE3E</key>
+		<key>DC31586F-924F-4F76-88EA-1B2A79F826ED</key>
 		<dict>
 			<key>from</key>
 			<string>07CF83D9-3703-4D06-99A9-5879B5A428EE - 07CF83D9-3703-4D06-99A9-5879B5A428EE</string>
