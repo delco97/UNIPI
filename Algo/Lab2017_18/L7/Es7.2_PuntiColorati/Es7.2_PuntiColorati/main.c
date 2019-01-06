@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+FILE *fp;
 
 typedef struct _ColoredPoint{
     int x;
@@ -33,7 +33,7 @@ ColoredPoint * readPoints(int n){
     if(a == NULL)printf("\nBad allocation.");
     else{//Good allocation
         for(int i=0;i<n;i++)
-            scanf("%d %d %d",&a[i].x,&a[i].y,&a[i].c);
+            fscanf(fp,"%d %d %d",&a[i].x,&a[i].y,&a[i].c);
     }
     return a;
 }
@@ -48,7 +48,7 @@ Query * readQueries(int n){
     if(a == NULL)printf("\nBad allocation.");
     else{//Good allocation
         for(int i=0;i<n;i++)
-            scanf("%d %d %d %d",&a[i].x1,&a[i].y1,&a[i].x2,&a[i].y2);
+            fscanf(fp,"%d %d %d %d",&a[i].x1,&a[i].y1,&a[i].x2,&a[i].y2);
     }
     return a;
 }
@@ -90,9 +90,18 @@ int main(int argc, const char * argv[]) {
     Query * queries;
     int n; //Number of colored points
     int m; //Number of queries
-
-    scanf("%d",&n);
-    scanf("%d",&m);
+    
+    //****DEBUG
+    char ch;
+    
+    fp = fopen("/Users/Andrea/Desktop/input10.txt", "r"); // read mode
+    while((ch = fgetc(fp)) != EOF)
+        printf("%c", ch);
+    //****END_DEBUG
+    rewind(fp);
+    fscanf(fp,"%d",&n); //****DEBUG
+    fscanf(fp,"%d",&m); //****DEBUG
+    //scanf("%d %d\n",&n ,&m);
     //ASSUMPTION: n > 0 && m > 0
     points = readPoints(n);
     queries = readQueries(m);
@@ -109,6 +118,6 @@ int main(int argc, const char * argv[]) {
     //Deallocation
     if(points != NULL)free(points);
     if(queries != NULL)free(queries);
-    
+    fclose(fp);//****DEBUG
     return 0;
 }

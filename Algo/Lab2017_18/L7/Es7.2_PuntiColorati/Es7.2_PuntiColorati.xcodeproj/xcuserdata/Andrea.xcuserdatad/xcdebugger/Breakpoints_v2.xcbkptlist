@@ -8,13 +8,16 @@
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
+            condition = "i==18"
             continueAfterRunningActions = "No"
             filePath = "Es7.2_PuntiColorati/main.c"
-            timestampString = "568307963.04321"
+            timestampString = "568382449.83933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119">
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "main"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
