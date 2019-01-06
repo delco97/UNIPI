@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-FILE *fp;
 
 typedef struct _ColoredPoint{
     int x;
@@ -32,8 +31,10 @@ ColoredPoint * readPoints(int n){
     a = (ColoredPoint *)malloc(n * sizeof(ColoredPoint));
     if(a == NULL)printf("\nBad allocation.");
     else{//Good allocation
-        for(int i=0;i<n;i++)
-            fscanf(fp,"%d %d %d",&a[i].x,&a[i].y,&a[i].c);
+        for(int i=0;i<n;i++){
+            //fscanf(fp,"%d %d %d",&a[i].x,&a[i].y,&a[i].c); //DEBUG
+            scanf("%d %d %d",&a[i].x,&a[i].y,&a[i].c);
+        }
     }
     return a;
 }
@@ -47,8 +48,10 @@ Query * readQueries(int n){
     a = (Query *)malloc(n * sizeof(Query));
     if(a == NULL)printf("\nBad allocation.");
     else{//Good allocation
-        for(int i=0;i<n;i++)
-            fscanf(fp,"%d %d %d %d",&a[i].x1,&a[i].y1,&a[i].x2,&a[i].y2);
+        for(int i=0;i<n;i++){
+            //fscanf(fp,"%d %d %d %d",&a[i].x1,&a[i].y1,&a[i].x2,&a[i].y2); //DEBUG
+            scanf("%d %d %d %d",&a[i].x1,&a[i].y1,&a[i].x2,&a[i].y2);
+        }
     }
     return a;
 }
@@ -92,16 +95,15 @@ int main(int argc, const char * argv[]) {
     int m; //Number of queries
     
     //****DEBUG
-    char ch;
-    
-    fp = fopen("/Users/Andrea/Desktop/input10.txt", "r"); // read mode
-    while((ch = fgetc(fp)) != EOF)
-        printf("%c", ch);
+    //char ch;
+    //fp = fopen("/Users/Andrea/Desktop/input10.txt", "r"); // read mode
+    //while((ch = fgetc(fp)) != EOF)
+    //  printf("%c", ch);
     //****END_DEBUG
-    rewind(fp);
-    fscanf(fp,"%d",&n); //****DEBUG
-    fscanf(fp,"%d",&m); //****DEBUG
-    //scanf("%d %d\n",&n ,&m);
+    //rewind(fp); //****DEBUG
+    //fscanf(fp,"%d",&n); //****DEBUG
+    //fscanf(fp,"%d",&m); //****DEBUG
+    scanf("%d %d\n",&n ,&m);
     //ASSUMPTION: n > 0 && m > 0
     points = readPoints(n);
     queries = readQueries(m);
@@ -111,13 +113,14 @@ int main(int argc, const char * argv[]) {
         qsort(points, n, sizeof(ColoredPoint), comparePoints); //Sort by color O(nlog(n))
         //printf("\nPoints after sort: \n");printPoints(points, n); //TEST
         //Result
-        for(int i=0;i<m;i++)//Loop queries
+        for(int i=0;i<m;i++){//Loop queries
             printf("%d\n",countPointMatches(queries[i],points,n));
+        }
     }
     
     //Deallocation
     if(points != NULL)free(points);
     if(queries != NULL)free(queries);
-    fclose(fp);//****DEBUG
+    //fclose(fp);//****DEBUG
     return 0;
 }

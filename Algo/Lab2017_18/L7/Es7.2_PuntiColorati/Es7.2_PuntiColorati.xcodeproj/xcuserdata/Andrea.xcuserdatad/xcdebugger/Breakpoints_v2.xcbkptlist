@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             condition = "i==18"
             continueAfterRunningActions = "No"
             filePath = "Es7.2_PuntiColorati/main.c"
-            timestampString = "568382449.83933"
+            timestampString = "568478700.09394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "main"
             landmarkType = "9">
          </BreakpointContent>
