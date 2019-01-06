@@ -8,8 +8,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_CHAR 20
+
+typedef struct _String {
+    char text[MAX_CHAR];
+    char firstAn[MAX_CHAR];
+} String;
 
 int comapareChar(const void * a,const void * b){
     char c1 = *((char *)a);
@@ -17,37 +23,35 @@ int comapareChar(const void * a,const void * b){
     return c1 - c2;
 }
 
-void printStrings(char ** a,int n){
-    for(int i=0;i<n;i++)printf("%s\n",a[i]);
+int comapareString(const void * a,const void * b){
+    String s1 = *((String *)a);
+    String s2 = *((String *)b);
+    int cmp = strcmp(s1.firstAn,s2.firstAn);
+    if(cmp == 0)return strcmp(s1.text,s2.text);
+    return cmp;
 }
 
-void deallocationStrings(char ** a,int k){
-    if(a!=NULL){
-        for(int i=0;i<=k;i++)free(a[i]);
-        free(a);
-    }
+void printStrings_text(String * a,int n){
+    for(int i=0;i<n;i++)printf("%s\n",a[i].text);
 }
 
-char ** allocationStrings(int n,int max_char){
-    char ** aux = NULL;
-    aux = (char **)malloc(n * sizeof(char *));
-    if(aux == NULL)printf("Bad allocation (1)");
-    else{//Good allocation
-        for (int i=0; i<n; i++) {
-            aux[i] = (char *)malloc(max_char * sizeof(char *));
-            if(aux[i] == NULL){
-                printf("Bad allocation (2)");
-                deallocationStrings(aux,i-1);
-                aux = NULL;
-                break;
-            }
-        }
-    }
+void printStrings(String * a,int n){
+    for(int i=0;i<n;i++)printf("%s %s\n",a[i].text,a[i].firstAn);
+}
+
+void printStrings_firstAn(String * a,int n){
+    for(int i=0;i<n;i++)printf("%s\n",a[i].firstAn);
+}
+
+String * allocationStrings(int n,int max_char){
+    String * aux = NULL;
+    aux = (String *)malloc(n * sizeof(String));
+    if(aux == NULL)printf("Bad allocation");
     return aux;
 }
 
-char ** readStrings(int * size){
-    char ** aux = NULL;
+String * readStrings(int * size){
+    String * aux = NULL;
     int n = 0;
     
     scanf("%d",&n);
@@ -55,7 +59,11 @@ char ** readStrings(int * size){
     else{
         aux = allocationStrings(n,MAX_CHAR);
         if(aux != NULL)//Good allocation
-            for(int i=0;i<n;i++)scanf("%s",aux[i]); //Read strings
+            for(int i=0;i<n;i++){//Read strings
+                scanf("%s",aux[i].text);
+                strcpy(aux[i].firstAn,aux[i].text);
+                qsort(aux[i].firstAn, strlen(aux[i].firstAn), sizeof(char), comapareChar);
+            }
     }
     
     *size = n;
@@ -63,19 +71,31 @@ char ** readStrings(int * size){
 }
 
 int main(int argc, const char * argv[]) {
-    char ** inputStrings;
+    String * inputStrings;
     int n;
+    int j=-1;
     
     inputStrings = readStrings(&n);
     if(inputStrings == NULL)printf("Read went wrong.");
     else{//Good read
-        //Sort each string charcater
-        for(int i=0;i<n;i++) qsort(inputStrings[i], strlen(inputStrings[i]), sizeof(char), comapareChar);
+        //printf("\nRead strings: \n");printStrings(inputStrings,n); //TEST
+        qsort(inputStrings, n, sizeof(String), comapareString);
         //printf("\nSorted strings: \n");printStrings(inputStrings,n); //TEST
-        
+        for(int i=0;i<n;i++){
+            if(j == -1){//First loop
+                printf("%s",inputStrings[i].text);
+                j++;
+            }else{
+                if(strcmp(inputStrings[i].firstAn,inputStrings[j].firstAn) != 0){//String with new firstAn
+                    printf("\n%s",inputStrings[i].text);
+                    j = i;
+                }else{//String with the same firstAn
+                    printf(" %s",inputStrings[i].text);
+                }
+            }
+        }
+        printf("\n");
     }
-    
-    
     
     return 0;
 }
