@@ -8,8 +8,12 @@
 
 #include <stdio.h>
 
+typedef struct _Node{//Nodo per lista unidirezionale
+    int val;
+    struct _Node * next;
+} Node;
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+
     return 0;
 }
