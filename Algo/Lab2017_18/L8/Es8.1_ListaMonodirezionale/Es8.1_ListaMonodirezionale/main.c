@@ -14,32 +14,32 @@ typedef struct _Node{//Nodo per lista unidirezionale
     struct _Node * next;
 } Node;
 
-void addBottom(Node ** h,int k){
-    Node * curs = NULL;
+void addBottom(Node ** h,Node ** t,int k){
     Node * aux = malloc(sizeof(Node));
     
     aux->val = k;
     aux->next = NULL;
-    if(*h == NULL){//Empty list
+    if(*t == NULL){//Empty list
         *h = aux;
+        *t = aux;
     }else{//At least one element in list
-        //Loop list
-        curs = *h;
-        while(curs->next != NULL)curs=curs->next; //Loop untill the last elment (curs->next == NULL) is reached
-        curs->next = aux;
+        (*t)->next = aux;
+        *t = aux;
     }
 }
 
-Node * readList(int * n){
+void readList(Node ** h,Node **t,int * n){
     Node * head = NULL;
+    Node * tail = NULL;
     int val;
     
     scanf("%d",n);//Read number of elements
     for(int i = 0;i < *n;i ++){
         scanf("%d",&val);
-        addBottom(&head,val);
+        addBottom(&head,&tail,val);
     }
-    return head;
+    *h = head;
+    *t = tail;
 }
 
 void printList(Node * h){
@@ -69,9 +69,10 @@ void deleteList(Node ** h){
 
 int main(int argc, const char * argv[]) {
     Node * head = NULL;
+    Node *tail = NULL;
     int n;
     
-    head  = readList(&n);
+    readList(&head,&tail,&n);
     //printf("\nNormal order:\n");printList(head); //TEST
     printListInv(&head);
     deleteList(&head);
