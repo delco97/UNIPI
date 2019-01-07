@@ -44,8 +44,26 @@ Node * readList(int * n){
 
 void printList(Node * h){
     if(h != NULL){
-        printList(h->next);
         printf("%d\n",h->val);
+        printList(h->next);
+    }
+}
+
+void printListInv(Node ** h){
+    if(*h != NULL){
+        printListInv(&((*h)->next));
+        printf("%d\n",(*h)->val);
+    }
+}
+
+void deleteList(Node ** h){
+    if(*h != NULL){
+        Node * p = *h;
+        while(p != NULL){//Loop through all nodes
+            p = p->next;
+            free(p);
+        }
+        *h = NULL;
     }
 }
 
@@ -54,6 +72,9 @@ int main(int argc, const char * argv[]) {
     int n;
     
     head  = readList(&n);
-    printList(head);
+    //printf("\nNormal order:\n");printList(head); //TEST
+    printListInv(&head);
+    deleteList(&head);
+    //printf("\nAfter erase:\n");printList(head); //TEST
     return 0;
 }
