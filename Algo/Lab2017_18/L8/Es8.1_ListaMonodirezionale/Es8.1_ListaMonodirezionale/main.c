@@ -42,11 +42,18 @@ Node * readList(int * n){
     return head;
 }
 
+void printList(Node * h){
+    if(h != NULL){
+        printList(h->next);
+        printf("%d\n",h->val);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     Node * head = NULL;
     int n;
     
     head  = readList(&n);
-    
+    printList(head);
     return 0;
 }
