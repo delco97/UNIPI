@@ -30,7 +30,7 @@ void addBottom(Node ** h,int k){
     }
 }
 
-Node * readNodes(int * n){
+Node * readList(int * n){
     Node * head = NULL;
     int val;
     
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
     Node * head = NULL;
     int n;
     
-    head  = readNodes(&n);
+    head  = readList(&n);
     
     return 0;
 }
