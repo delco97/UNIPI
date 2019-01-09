@@ -1,107 +1,96 @@
-//
-//  main.c
-//  Es9.1_ABR_Ricerca
-//
-//  Created by Andrea Del Corto on 07/01/19.
-//  Copyright © 2019 Andrea Del Corto. All rights reserved.
-//
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-typedef struct _node{//Tree node
+typedef struct _Node{
     int key;
-    struct _node * left;
-    struct _node * right;
+    struct _Node * c1;//child 1
+    struct _Node * c2;//child 2
+    struct _Node * c3;//child 3
 } Node;
 
-void printABR_Intermediate(Node * t){
-    if(t != NULL){
-        printABR_Intermediate(t->left);
-        printf("%d\n",t->key);
-        printABR_Intermediate(t->right);
-    }
-}
-
 Node * insertNode_Iter(Node * t,int k){
-    Node * aux = (Node *)malloc(sizeof(Node));
+    Node * aux;
+    Node * cur;
+    Node * prev;
+    //Create new leaf to insert
+    aux = (Node *)malloc(sizeof(Node));
     aux->key = k;
-    aux->left = NULL;
-    aux->right = NULL;
-    if(t == NULL)return aux;
-    //Tree not empty
-    Node * cur = t;
-    Node * prev = t;
+    aux->c1 = NULL;
+    aux->c2 = NULL;
+    aux->c3 = NULL;
+    if(t == NULL) return aux; //tree empty
+    //Find insert position
+    cur = t;
+    prev =  t;
     while(cur != NULL){
         prev = cur;
-        if(k < cur->key)//Insert in left tree
-            cur = cur->left;
-        else //Insert in right tree
-            cur = cur->right;
+        if(k < cur->key)cur = cur->c1;
+        else{
+            if((cur->key) % k == 0)cur = cur->c2;
+            else cur = cur->c3;
+        }
     }
-    //cur == NULL, prev == cur's father (if cur were a node)
-    if(k < prev->key)//Insert in left tree
-        prev->left = aux;
-    else //Insert in right tree
-        prev->right = aux;
+    //cur != NULL, prev point to cur's father (if cur was an existing node)
+    //INSERT
+    if(k < prev->key)prev->c1 = aux;
+    else{
+        if((prev->key) % k == 0)prev->c2 = aux;
+        else prev->c3 = aux;
+    }
     return t;
 }
 
-Node * insertNode_Rec(Node * t,int k){
-    Node * aux = (Node *)malloc(sizeof(Node));
+Node * insertNode(Node * t,int k){
+    Node * aux = (Node *)malloc(sizeof(Node)); //Create new leaf to insert
     aux->key = k;
-    aux->left = NULL;
-    aux->right = NULL;
-    
-    if(t == NULL)return aux;
+    aux->c1 = NULL;
+    aux->c2 = NULL;
+    aux->c3 = NULL;
+    if(t == NULL) return aux;
     //Tree not empty
-    if(k < t->key)t->left = insertNode_Rec(t->left,k);
-    else t->right = insertNode_Rec(t->right,k);
+    if(k < t->key)//insert aux in c1 child
+        t->c1 = insertNode(t->c1,k);
+    else{
+        if(k % (t->key) == 0) //insert aux in c2 child
+            t->c2 = insertNode(t->c2,k);
+        else //insert aux in c3 child
+            t->c3 = insertNode(t->c3,k);
+    }
     return t;
 }
 
-Node * readABR(int n){
-    Node * tree = NULL;
-    int k;
-    
-    for(int i=0;i<n;i++){//Read nodes
-        scanf("%d",&k);
-        tree = insertNode_Rec(tree,k);
-    }
-    
-    return tree;
+int completeNodes(Node * t){
+    if(t == NULL)return 0;
+    if(t->c1 != NULL && t->c2 != NULL && t->c3 != NULL) //is a node with three childreen
+        return 1 + completeNodes(t->c1) + completeNodes(t->c2) + completeNodes(t->c3);
+    //One or more child are not empty
+    if(t->c1 == NULL && t->c2 == NULL && t->c3 == NULL)//all childreen are empty => is a leaf
+        return 0;
+    //A least one child must be NO empty now
+    return completeNodes(t->c1) + completeNodes(t->c2) + completeNodes(t->c3);
 }
 
-int isSameRoot(Node * a,Node * b,int k){
-    if(a == NULL && b == NULL)return 1; //Both tree are empty
-    if( (a == NULL && b != NULL) || (a != NULL && b == NULL) ) return 0; //One is empty the other is not
-    //Both tree are not empty
-    if(a->key == k && b->key == k)return 1; //Both nodes contain k
-    if( (a->key == k && b->key != k) || (a->key != k && b->key == k) ) return 0; //Only one node contain k
-    //Both nodes doesn't contain k
-    if(a->key != b->key)return 0; //Both nodes must have the same key. If not the root is different
-    //Continue search
-    if(k < a->key)//Search in left tree
-        return isSameRoot(a->left,b->left,k);
-    else //Search in right tree
-        return isSameRoot(a->right,b->right,k);
-}
-
-int main(int argc, const char * argv[]) {
-    Node * t1 = NULL;
-    Node * t2 = NULL;
-    int n=0;
-    int k;//target element to be searched in t1 and t2. I can ASSUME that k is contained in both tree
+Node * readNodes(int *dim){
+    Node * t = NULL;
+    int n,aux;
     
     scanf("%d",&n);
-    scanf("%d",&k);
+    for(int i=0;i<n;i++){//Insert nodes
+        scanf("%d",&aux);
+        t = insertNode(t,aux);
+    }
+    *dim = n;
+    return t;
+}
+
+
+int main(){
+    Node * t;
+    int n;
     
-    t1 = readABR(n);
-    t2 = readABR(n);
-    
-    printf("%d\n",isSameRoot(t1,t2,k));
-    
-    //printABR_Intermediate(tree);
+    t = readNodes(&n);
+    printf("%d\n",completeNodes(t));
     
     return 0;
 }
