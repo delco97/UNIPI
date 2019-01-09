@@ -60,35 +60,48 @@ Node * insertNode_Rec(Node * t,int k){
     return t;
 }
 
-Node * readABR(int * dim){
+Node * readABR(int n){
     Node * tree = NULL;
-    int n=0;
     int k;
-    
-    scanf("%d",&n);//Read number of nodes
     
     for(int i=0;i<n;i++){//Read nodes
         scanf("%d",&k);
         tree = insertNode_Rec(tree,k);
     }
     
-    *dim = n;
     return tree;
 }
 
-int max(int a,int b){return (a>b)?a:b;}
-
-int height(Node * t){
-    if(t == NULL)return 0;
-    return 1 + max(height(t->left),height(t->right));
+int isSameRoot(Node * a,Node * b,int k){
+    if(a == NULL && b == NULL)return 1; //Both tree are empty
+    if( (a == NULL && b != NULL) || (a != NULL && b == NULL) ) return 0; //One is empty the other is not
+    //Both tree are not empty
+    if(a->key == k && b->key == k)return 1; //Both nodes contain k
+    if( (a->key == k && b->key != k) || (a->key != k && b->key == k) ) return 0; //Only one node contain k
+    //Both nodes doesn't contain k
+    if(a->key != b->key)return 0; //Both nodes must have the same key. If not the root is different
+    //Continue search
+    if(k < a->key)//Search in left tree
+        return isSameRoot(a->left,b->left,k);
+    else //Search in right tree
+        return isSameRoot(a->right,b->right,k);
 }
 
 int main(int argc, const char * argv[]) {
-    Node * tree = NULL;
+    Node * t1 = NULL;
+    Node * t2 = NULL;
     int n=0;
+    int k;//target element to be searched in t1 and t2. I can ASSUME that k is contained in both tree
     
-    tree = readABR(&n);
-    printABR_Intermediate(tree);
+    scanf("%d",&n);
+    scanf("%d",&k);
+    
+    t1 = readABR(n);
+    t2 = readABR(n);
+    
+    printf("%d\n",isSameRoot(t1,t2,k));
+    
+    //printABR_Intermediate(tree);
     
     return 0;
 }
