@@ -17,7 +17,7 @@ typedef struct _Node{//Node of unidirectional list
 } Node;
 
 typedef struct _HashTab{
-    int dim;
+    int slots;
     int a; //Param for hash
     int b; //Param for hash
     int p; //
@@ -37,7 +37,7 @@ int hash(int x,int n,int a, int b, int p){
 
 void insertHashTab(HashTab * t,int k){
     int lenList = 0;
-    int h = hash(k,t->dim,t->a,t->b,t->p);
+    int h = hash(k,t->slots,t->a,t->b,t->p);
     Node * aux = (Node *) malloc(sizeof(Node));
     aux->k = k;
     aux->next = NULL;
@@ -64,15 +64,15 @@ void readHashTab(HashTab * t){
     scanf("%d",&a);
     scanf("%d",&b);
     //Atributes set
-    t->dim = 2*n;
+    t->slots = 2*n;
     t->a = a;
     t->b = b;
     t->p = P;
     t->confilcts = 0;
     t->max_list_size = 0;
     //Allocate space for array of pointer to Node
-    t->tab = (Node **)malloc(t->dim * sizeof(Node *));
-    for(int i=0;i < t->dim;i++)t->tab[i] = NULL; //Init solts
+    t->tab = (Node **)malloc(t->slots * sizeof(Node *));
+    for(int i=0;i < t->slots;i++)t->tab[i] = NULL; //Init solts
     for(int i=0;i < n;i++){//Read expected values
         scanf("%d",&k);
         insertHashTab(t,k);
