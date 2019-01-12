@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <limits.h>
 
 int * readBarsPrices(int * dim){
     int * a = NULL;
@@ -27,23 +27,38 @@ int * readBarsPrices(int * dim){
     return a;
 }
 
-int getMaxProfit_OLD(int * a,int n,int sx,int dx,int  max){
-    if(dx < sx) return 0; //Price for no bar
-    if(sx == dx) return a[dx-sx]; //price for bar long 1
-    //Bar is long more then 1
-    int cx = (sx + dx)/2; //Cut bar in the middle
-    int lenSx = (cx - sx) + 1; //length left bar (at least is 1)
-    int lenDx = (dx - (cx + 1)) + 1; //length right bar (at least is 1)
-    if( (a[lenSx-1] + a[lenDx-1]) > max) //Check if the price of barSx + barDx is bigger then the current max price
-        max = (a[lenSx-1] + a[lenDx-1]);
-    int maxSx = getMaxProfit(a,n,sx,cx,max); //Get the max profit of the left bar
-    int maxDx = getMaxProfit(a,n,cx + 1, dx,max); //Get the max profit of the right bar
-    if( maxSx + maxDx > max) max = maxSx + maxDx;
-    return max;
+int max(int a,int b){
+    int m = a;
+    if(b > m)m = b;
+    return m;
 }
 
+int getMaxProfit_Inefficient(int * p,int n){
+    if(n == 0) return 0; //Price for bar of lenght 0
+    int m = INT_MIN; // -infinity
+    for(int i=1;i<=n;i++)
+        m = max(m,p[i-1] + getMaxProfit_Inefficient(p, n - i));
+    return m;
+}
 
-void print
+int bottomUp_MaxProfit(int * p,int n,int * optimal_size){
+    int * r = malloc( (n+1) * sizeof(int)); //r[0...n]
+    int * s = malloc( (n+1) * sizeof(int)); //s[0...n]
+    int m; //hold max revenue
+    r[0] = 0;
+    for(int j = 1; j<= n; j++){
+        m = INT_MIN;
+        for(int i = 1; i<= j; i++){
+            if(m < p[i -1] + r[j - i]){//New optimal size
+                m = p[i -1] + r[j - i]; //Updated max revenue
+                s[j] = i;
+            }
+        }
+        r[j] = m; //get max revenue for rod of lenght j
+    }
+    *optimal_size = s[n]; //get optimal size cut for rod n
+    return r[n];
+}
 
 
 int main(int argc, const char * argv[]) {
@@ -54,7 +69,13 @@ int main(int argc, const char * argv[]) {
     prices = readBarsPrices(&n);
     
     if(n>0){//Bar is at least 1 inch long
-        printf("\n%d",getMaxProfit(prices,n,0,n-1,prices[n-1]));
+        int optimalSize = n;
+        int maxRevenue = bottomUp_MaxProfit(prices,n,&optimalSize);
+        printf("%d\n",maxRevenue);
+        if(optimalSize == n) printf("%d\n",n);
+        else
+            printf("%d %d\n",optimalSize,n-optimalSize);
+        
     }
     
     return 0;
