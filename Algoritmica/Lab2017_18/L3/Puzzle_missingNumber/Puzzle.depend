@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1542893315 source:/media/psf/Home/Desktop/UNIPI/Algo/Lab2017_18/L3/Puzzle/main.c
+	<stdio.h>
+	<stdlib.h>
+
