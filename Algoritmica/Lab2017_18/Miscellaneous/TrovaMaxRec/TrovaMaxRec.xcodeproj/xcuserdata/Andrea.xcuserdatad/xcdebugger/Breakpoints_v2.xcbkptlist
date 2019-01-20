@@ -9,12 +9,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GeneraBinarie/main.c"
-            timestampString = "569675174.192459"
+            filePath = "TrovaMaxRec/main.c"
+            timestampString = "569695666.009851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "main"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrovaMaxRec/main.c"
+            timestampString = "569695666.010258"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "main"
             landmarkType = "9">
          </BreakpointContent>
@@ -25,12 +41,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GeneraBinarie/main.c"
-            timestampString = "569675174.192531"
+            filePath = "TrovaMaxRec/main.c"
+            timestampString = "569695666.01051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "main"
             landmarkType = "9">
          </BreakpointContent>

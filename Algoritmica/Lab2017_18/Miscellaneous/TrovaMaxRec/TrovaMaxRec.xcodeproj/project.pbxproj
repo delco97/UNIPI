@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65446A3321F47EA100EC6A09 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 65446A3221F47EA100EC6A09 /* main.c */; };
+		65446A4621F4D3AA00EC6A09 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 65446A4521F4D3AA00EC6A09 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		65446A2D21F47EA000EC6A09 /* CopyFiles */ = {
+		65446A4021F4D3AA00EC6A09 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		65446A2F21F47EA000EC6A09 /* Sottoinsiemi_Permutazioni */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sottoinsiemi_Permutazioni; sourceTree = BUILT_PRODUCTS_DIR; };
-		65446A3221F47EA100EC6A09 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		65446A4221F4D3AA00EC6A09 /* TrovaMaxRec */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrovaMaxRec; sourceTree = BUILT_PRODUCTS_DIR; };
+		65446A4521F4D3AA00EC6A09 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		65446A2C21F47EA000EC6A09 /* Frameworks */ = {
+		65446A3F21F4D3AA00EC6A09 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65446A2621F47EA000EC6A09 = {
+		65446A3921F4D3AA00EC6A09 = {
 			isa = PBXGroup;
 			children = (
-				65446A3121F47EA000EC6A09 /* GeneraBinarie */,
-				65446A3021F47EA000EC6A09 /* Products */,
+				65446A4421F4D3AA00EC6A09 /* TrovaMaxRec */,
+				65446A4321F4D3AA00EC6A09 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		65446A3021F47EA000EC6A09 /* Products */ = {
+		65446A4321F4D3AA00EC6A09 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65446A2F21F47EA000EC6A09 /* Sottoinsiemi_Permutazioni */,
+				65446A4221F4D3AA00EC6A09 /* TrovaMaxRec */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65446A3121F47EA000EC6A09 /* GeneraBinarie */ = {
+		65446A4421F4D3AA00EC6A09 /* TrovaMaxRec */ = {
 			isa = PBXGroup;
 			children = (
-				65446A3221F47EA100EC6A09 /* main.c */,
+				65446A4521F4D3AA00EC6A09 /* main.c */,
 			);
-			path = GeneraBinarie;
+			path = TrovaMaxRec;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65446A2E21F47EA000EC6A09 /* Sottoinsiemi_Permutazioni */ = {
+		65446A4121F4D3AA00EC6A09 /* TrovaMaxRec */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65446A3621F47EA100EC6A09 /* Build configuration list for PBXNativeTarget "Sottoinsiemi_Permutazioni" */;
+			buildConfigurationList = 65446A4921F4D3AA00EC6A09 /* Build configuration list for PBXNativeTarget "TrovaMaxRec" */;
 			buildPhases = (
-				65446A2B21F47EA000EC6A09 /* Sources */,
-				65446A2C21F47EA000EC6A09 /* Frameworks */,
-				65446A2D21F47EA000EC6A09 /* CopyFiles */,
+				65446A3E21F4D3AA00EC6A09 /* Sources */,
+				65446A3F21F4D3AA00EC6A09 /* Frameworks */,
+				65446A4021F4D3AA00EC6A09 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Sottoinsiemi_Permutazioni;
-			productName = GeneraBinarie;
-			productReference = 65446A2F21F47EA000EC6A09 /* Sottoinsiemi_Permutazioni */;
+			name = TrovaMaxRec;
+			productName = TrovaMaxRec;
+			productReference = 65446A4221F4D3AA00EC6A09 /* TrovaMaxRec */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		65446A2721F47EA000EC6A09 /* Project object */ = {
+		65446A3A21F4D3AA00EC6A09 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Andrea Del Corto";
 				TargetAttributes = {
-					65446A2E21F47EA000EC6A09 = {
+					65446A4121F4D3AA00EC6A09 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
-			buildConfigurationList = 65446A2A21F47EA000EC6A09 /* Build configuration list for PBXProject "Sottoinsiemi_Permutazioni" */;
+			buildConfigurationList = 65446A3D21F4D3AA00EC6A09 /* Build configuration list for PBXProject "TrovaMaxRec" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 65446A2621F47EA000EC6A09;
-			productRefGroup = 65446A3021F47EA000EC6A09 /* Products */;
+			mainGroup = 65446A3921F4D3AA00EC6A09;
+			productRefGroup = 65446A4321F4D3AA00EC6A09 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65446A2E21F47EA000EC6A09 /* Sottoinsiemi_Permutazioni */,
+				65446A4121F4D3AA00EC6A09 /* TrovaMaxRec */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		65446A2B21F47EA000EC6A09 /* Sources */ = {
+		65446A3E21F4D3AA00EC6A09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65446A3321F47EA100EC6A09 /* main.c in Sources */,
+				65446A4621F4D3AA00EC6A09 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		65446A3421F47EA100EC6A09 /* Debug */ = {
+		65446A4721F4D3AA00EC6A09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -184,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		65446A3521F47EA100EC6A09 /* Release */ = {
+		65446A4821F4D3AA00EC6A09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -236,7 +236,7 @@
 			};
 			name = Release;
 		};
-		65446A3721F47EA100EC6A09 /* Debug */ = {
+		65446A4A21F4D3AA00EC6A09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -245,7 +245,7 @@
 			};
 			name = Debug;
 		};
-		65446A3821F47EA100EC6A09 /* Release */ = {
+		65446A4B21F4D3AA00EC6A09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -257,25 +257,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		65446A2A21F47EA000EC6A09 /* Build configuration list for PBXProject "Sottoinsiemi_Permutazioni" */ = {
+		65446A3D21F4D3AA00EC6A09 /* Build configuration list for PBXProject "TrovaMaxRec" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				65446A3421F47EA100EC6A09 /* Debug */,
-				65446A3521F47EA100EC6A09 /* Release */,
+				65446A4721F4D3AA00EC6A09 /* Debug */,
+				65446A4821F4D3AA00EC6A09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65446A3621F47EA100EC6A09 /* Build configuration list for PBXNativeTarget "Sottoinsiemi_Permutazioni" */ = {
+		65446A4921F4D3AA00EC6A09 /* Build configuration list for PBXNativeTarget "TrovaMaxRec" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				65446A3721F47EA100EC6A09 /* Debug */,
-				65446A3821F47EA100EC6A09 /* Release */,
+				65446A4A21F4D3AA00EC6A09 /* Debug */,
+				65446A4B21F4D3AA00EC6A09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 65446A2721F47EA000EC6A09 /* Project object */;
+	rootObject = 65446A3A21F4D3AA00EC6A09 /* Project object */;
 }
