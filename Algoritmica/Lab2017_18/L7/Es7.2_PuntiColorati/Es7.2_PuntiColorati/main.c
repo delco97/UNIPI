@@ -68,13 +68,13 @@ int isPointInsideQuery(Query q,ColoredPoint p){
 
 int countPointMatches(Query q,ColoredPoint * inputPoints,int n){
     int nMatch = 0; //number of DISTINCT points inside query q
-    int lastPoint = -1; //position last point counted in inputPoints
+    int lastPoint = -1; //position of last point counted in inputPoints
     
     for(int i=0;i<n;i++){//Loop through inputPoints
         if(isPointInsideQuery(q,inputPoints[i])){//Current point match query
-            if(lastPoint == -1){//First loop
+            if(lastPoint == -1){//First point found
                 nMatch++;
-                lastPoint++;
+                lastPoint=i;
             }else{//Other points have been counted, is current point new ?
                 if(inputPoints[i].c != inputPoints[lastPoint].c){//Current point is not the last one counted
                     lastPoint = i;
