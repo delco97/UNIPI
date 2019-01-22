@@ -1,0 +1,5 @@
+Input is made up of:
+ - a line containing the number n of nodes of the graph;
+ - n lines, one for each node i, with i ∈ [0, n), in the following format:
+ 	- number n of arcs outgoing from i;
+	- list of n destination nodes, represented with numbers [0, n).
