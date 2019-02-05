@@ -1,0 +1,7 @@
+Testo esame:
+
+Il programma deve leggere una sequenza di interi ed inserirli in un albero binario di ricerca non bilanciato. In caso di duplicati, l'inserimento viene fatto a destra. Oltre alla chiave ciascuno nodo contiene l'attributo colore (rosso o nero). Un albero viene definito monocolore se tutti i suoi nodi sono dello stesso colore. Il programma deve stampare la dimensione del sottoalbero monocolore rosso piu' grande.
+
+L’input e’ formattato nel seguente modo. La prima riga contiene il numero n di nodi da inserire nell'albero. Seguono poi n righe contenenti ciascuna due interi, la chiave k da inserire e il colore c, che ha valore 0 per i nodi rossi e 1 per i nodi neri.
+
+L’output e' costituito da un unico intero corrispondente alla dimensione del sottoalbero monocolore rosso piu' grande.
