@@ -55,6 +55,7 @@ void deallocateList(List * l){
 		free(aux);
 	}
 	l->h = NULL;
+	l->t = NULL;
 }
 
 int main(){

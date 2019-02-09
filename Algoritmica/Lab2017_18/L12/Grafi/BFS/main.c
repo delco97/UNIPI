@@ -35,6 +35,17 @@ typedef struct _Graph{
     int n;  //Nodes number
 } Graph;
 
+void deallocateList(List * l){
+	LNode * cur = l->h;
+	LNode * aux;
+	while(cur != NULL){
+		aux = cur;
+		cur = cur->next;
+		free(aux);
+	}
+	l->h = NULL;
+	l->t = NULL;
+}
 
 void readGNode(List * list){
     List l;
@@ -150,8 +161,7 @@ void BFS(Graph g,int s){
         g.a[u].c = B;
     }
     
-    
-    //Deallocate list
+    deallocateList(&q);
     
 }
 

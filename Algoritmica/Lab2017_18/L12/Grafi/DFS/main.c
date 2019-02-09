@@ -35,6 +35,17 @@ typedef struct _Graph{
     int n;  //Nodes number
 } Graph;
 
+void deallocateList(List * l){
+	LNode * cur = l->h;
+	LNode * aux;
+	while(cur != NULL){
+		aux = cur;
+		cur = cur->next;
+		free(aux);
+	}
+	l->h = NULL;
+	l->t = NULL;
+}
 
 void readGNode(List * list){
     List l;
@@ -104,38 +115,34 @@ void tailInsert(List * q,int k){
     q->n++;
 }
 
-int headRemove(List * q){
+int tailRemove(List * q){
     int u = -1;
-    if(q->h != NULL){
-        u = q->h->k;
-        LNode * aux = q->h->next;
-        if(q->h == q->t) q->t = aux;
-        free(q->h);
-        q->h = aux;
+    if(q->t != NULL){
+        u = q->t->k;
+        LNode * aux = q->t->prev;
+        if(q->h == q->t) q->h = aux;
+        free(q->t);
+        q->t = aux;
+        if(q->t != NULL) q->t->next = NULL;
         q->n--;
     }
     return u;
 }
 
-void BFS(Graph g,int s){
+void DFS(Graph g,int s){
     int u;
     LNode * cur = NULL;
     List q; //Queue (FIFO)
     q.h = NULL;
     q.t = NULL;
     q.n = 0;
-    //Init nodes for BFS
-    for(int i=0;i<g.n;i++){
-        g.a[i].c = W;
-        g.a[i].d = INT_MAX;
-        g.a[i].prev = -1;
-    }
+    
     g.a[s].c = G;
     g.a[s].prev = -1;
     g.a[s].d = 0;
     tailInsert(&q,s);
     while(q.n != 0){
-        u = headRemove(&q);
+        u = tailRemove(&q);
         printf("%d ",u);
         cur = g.a[u].adj.h; //Head of the adjacency list of node u
         while(cur != NULL){
@@ -150,9 +157,26 @@ void BFS(Graph g,int s){
         g.a[u].c = B;
     }
     
-    
-    //Deallocate list
-    
+    deallocateList(&q);
+}
+
+void DFS_Visit(Graph g,int s){
+	 //Init nodes for DFS
+    for(int i=0;i<g.n;i++){
+        g.a[i].c = W;
+        g.a[i].d = INT_MAX;
+        g.a[i].prev = -1;
+    }
+    printf("Source %d => ",s);
+    DFS(g,s);
+    printf("\n");
+    for(int i=0;i<g.n;i++){
+    	if(g.a[i].c == W){
+    		printf("Source %d => ",i);
+    		DFS(g,i); //i as source node
+    		printf("\n");
+    	}
+    }
 }
 
 void printList(List l){
@@ -163,26 +187,8 @@ void printList(List l){
         c = c->next;
     }
 }
-/*
-//TEST FOR LIST FIFO
-int main(){
-    List q;q.h = NULL;q.t=NULL;q.n=0;
-    int x;
-    do{
-        scanf("%d",&x);
-        if(x != 0){
-            if(x == -1) printf("Following elememnts removed: %d\n",headRemove(&q));
-            else//Add element
-                tailInsert(&q,x);
-            printList(q);
-        }
-        printf("\n");
-    }while(x != 0);
-    return 0;
-}
-*/
 
- int main(){
+int main(){
 	 Graph g;
 	 int s;
 	 if( readGraph(&g) ){//Good graph read
@@ -190,8 +196,30 @@ int main(){
 		 printGraph(g);
 		 printf("\nSelect a source node for BFS: ");
 		 scanf("%d",&s);
-		 BFS(g,s);
+		 DFS_Visit(g,s);
 	 }
  	return 0;
- }
+}
+
+/*
+int main(){
+    List q;q.h = NULL;q.t=NULL;q.n=0;
+    int x;
+    do{
+        scanf("%d",&x);
+        if(x != 0){
+            if(x == -1) printf("Following elememnts removed: %d\n",tailRemove(&q));
+            else//Add element
+                tailInsert(&q,x);
+            printList(q);
+        }
+        printf("\n");
+    }while(x != 0);
+    
+    deallocateList(&q);
+    printf("\nList after deallocation:\n");
+    printList(q);
+    return 0;
+}*/
+
 
